@@ -39,7 +39,7 @@
 
                         <div class = "form-group">
                             <label for = "Email">Email</label>
-                        <input type = "text" class = "form-control" id = "email" name = "email" value = "{{route('siswa.index')}}">
+                        <input type = "text" class = "form-control" id = "email" name = "email" value = "{{$data->email}}">
                         </div>                        
 
                         <div class = "form-group">
