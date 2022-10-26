@@ -90,7 +90,8 @@ class ContactController extends Controller
     {
         $data=Kontak::find($id);
         $data1=Siswa::all();
-        return view('admin.editmastercontact', compact('data', 'data1'));
+        $data2=Jenis_kontak::all();
+        return view('admin.editmastercontact', compact('data', 'data1', 'data2'));
     }
 
     /**

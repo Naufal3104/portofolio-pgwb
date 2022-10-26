@@ -37,10 +37,15 @@
                         <div class = "form-group">
                             <label for = "id_jenis">Jenis Kontak</label>
                         <select type = "text" class = "form-control" id = "id_jenis" name = "id_jenis">
-                            <option selected ></option>
-                            <option value = "1" @if ($data->id_jenis == 1) selected @endif>Nomor Telepon</option>
-                            <option value = "2" @if ($data->id_jenis ==  2) selected @endif>Instagram</option>
-                            <option value = "3" @if ($data->id_jenis ==  3) selected @endif>Telegram</option>
+                            <option selected ></option>                          
+                            @foreach ($data2 as $item)
+                                
+                            @if ($data->id_jenis == $item->id)
+                            <option value ="{{$item->id}}" selected>{{$item->jenis_kontak}}</option>  
+                            @else
+                            <option value="{{$item->id}}">{{$item->jenis_kontak}}</option> 
+                            @endif
+                            @endforeach
                         </select>
                         </div>
 

@@ -32,7 +32,7 @@
                     </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/jeniscontact"><i class="fa fa-phone"></i>
-                        <span>Master JenisKontak</span></a>
+                        <span>Master Jenis Kontak</span></a>
                     </li>
 
     

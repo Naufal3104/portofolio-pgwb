@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jenis_kontak;
 use Illuminate\Http\Request;
 
 class JenisKontakController extends Controller
@@ -13,7 +14,8 @@ class JenisKontakController extends Controller
      */
     public function index()
     {
-        return view('admin.masterjeniscontact');
+        $data = Jenis_kontak::all();
+        return view('admin.masterjeniscontact', compact('data'));
     }
 
     /**
@@ -23,7 +25,7 @@ class JenisKontakController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.createmasterjeniscontact');
     }
 
     /**
@@ -34,7 +36,23 @@ class JenisKontakController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'required' =>':attribute harus diisi terlebih dahulu',
+            'min' =>':attribute minimal :min karakter',
+            'max' =>':attribute minimal :max karakter',
+            'numeric' =>':attribute harus diisi angka',
+            'mimes' =>':attribute harus bertipe jpg,png,jpeg,svg,gif',
+            'size' =>'file yang diupload maksimal :size'
+        ];
+        $this->validate ($request,[
+            'jenis_kontak' => 'required|min:3|max:30',
+        ],$messages);
+
+        Jenis_kontak::create([
+            'jenis_kontak' => $request ->jenis_kontak,
+        ]);
+
+        return redirect('/jeniscontact');
     }
 
     /**
@@ -56,7 +74,8 @@ class JenisKontakController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=Jenis_kontak::find($id);
+        return view('admin.editmasterjeniscontact', compact('data'));
     }
 
     /**
@@ -68,7 +87,23 @@ class JenisKontakController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $messages = [
+            'required' =>':attribute harus diisi terlebih dahulu',
+            'min' =>':attribute minimal :min karakter',
+            'max' =>':attribute minimal :max karakter',
+            'numeric' =>':attribute harus diisi angka',
+            'mimes' =>':attribute harus bertipe jpg,png,jpeg,svg,gif',
+            'size' =>'file yang diupload maksimal :size'
+        ];
+        $this->validate ($request,[
+            'jenis_kontak' => 'required|min:3|max:30',
+        ],$messages);
+
+        $jeniskontak=Jenis_kontak::find($id);
+            $jeniskontak->jenis_kontak = $request->jenis_kontak;                 
+            $jeniskontak->save();
+            return redirect()->route('jeniscontact.index');
+
     }
 
     /**
@@ -79,6 +114,7 @@ class JenisKontakController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data=Jenis_kontak::find($id)->delete();
+        return redirect('jeniscontact');
     }
 }

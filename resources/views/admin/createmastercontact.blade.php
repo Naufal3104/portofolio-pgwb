@@ -31,9 +31,9 @@
                             <label for = "Jeniskontak">Jenis Kontak</label>
                         <select type = "text" class = "form-control" id = "id_jenis" name = "id_jenis" value = "{{old('id_jenis')}}">
                             <option selected ></option>
-                            <option value = "1">Nomor Telepon</option>
-                            <option value = "2">Instagram</option>
-                            <option value = "3">Telegram</option>
+                            @foreach ($data1 as $item)
+                            <option value = {{$item->id}}>{{$item->jenis_kontak}}</option>
+                            @endforeach
                         </select>
                         </div>
 
