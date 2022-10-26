@@ -35,8 +35,8 @@ class LoginController extends Controller
     }
 }
 
-// App\Models\Users::create([
+// App\Models\User::create([
 //     'name' => 'admin',
 //     'email' => 'admin@gmail.com',
-//     'password' => bcrypt('admin')
+//     'password' => bcrypt('12345')
 // ]);
