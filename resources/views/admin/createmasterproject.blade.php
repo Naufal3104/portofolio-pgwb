@@ -18,13 +18,16 @@
                     <form method = "POST" enctype  = "multipart/form-data" action="{{route('project.store')}}">
                         @csrf             
                         <div class = "form-group">
-                            <label for = "id_siswa">Nama Siswa</label>
-                        <select type = "text" class = "form-control" id = "id_siswa" name = "id_siswa">
-                            @foreach ($data as $item)
-                            <option selected ></option>
-                            <option value = {{$item->id}}>{{$item->nama}}</option>  
-                        </select>
-                            @endforeach
+                        <label for = "id_siswa">Nama Siswa</label>
+                            <select type = "text" class = "form-control" id = "id_siswa" name = "id_siswa">
+                                @foreach ($data as $item)
+                                    @if ($item->id_siswa == $item->id)
+                                    <option value ="{{$item->id}}" selected>{{$item->nama}}</option>
+                                    @else
+                                    <option value="{{$item->id}}">{{$item->nama}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>         
                         <div class = "form-group">
                             <label for = "NamaProject">Nama Project</label>
